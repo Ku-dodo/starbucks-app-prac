@@ -73,14 +73,34 @@ new Swiper('.promotion .swiper-container', {
 
 const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
+const promoToggleIcon = promotionToggleBtn.querySelector('.material-icons');
 let isHidePromotion = false;
 promotionToggleBtn.addEventListener('click', function () {
   isHidePromotion = !isHidePromotion
   if (isHidePromotion) {
     //숨김
     promotionEl.classList.add('hide');
+    gsap.to(promoToggleIcon, .1,{
+      opacity: 0
+    })
+    setTimeout(function () {
+      promoToggleIcon.innerHTML = 'download';
+      gsap.to(promoToggleIcon, .1,{
+        opacity: 1
+      })
+    }, 200)
+
   } else {
     //보임
     promotionEl.classList.remove('hide');
+    gsap.to(promoToggleIcon, .1,{
+      opacity: 0
+    })
+    setTimeout(function () {
+      promoToggleIcon.innerHTML = 'upload';
+      gsap.to(promoToggleIcon, .1,{
+        opacity: 1
+      })
+    }, 200)
   }
 })
